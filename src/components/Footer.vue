@@ -1,5 +1,5 @@
 <template>
-    <v-footer inset app height="auto">
+    <v-footer app fixed clipped height="auto">
         <v-card
             flat
             width="100%"

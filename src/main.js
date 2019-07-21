@@ -5,6 +5,8 @@ import store from "./store";
 import firebase from "firebase";
 import "firebase/firestore";
 import firebaseConfig from "./config/firebase";
+import { Plugin } from 'vue-fragment'
+Vue.use(Plugin);
 
 firebase.initializeApp(firebaseConfig);
 

@@ -1,15 +1,13 @@
 <template>
-  <main>
     <v-app>
+        <guest-navigation/>
         <v-content>
-            <guest-navigation/>
             <v-container class="mt-3 mb-3">
                 <router-view/>
             </v-container>
-            <app-footer/>
         </v-content>
+        <app-footer/>
     </v-app>
-  </main>
 </template>
 
 <script>
@@ -17,10 +15,10 @@
     import AppFooter from './components/Footer';
 
     export default {
-        components:{
+        components: {
             GuestNavigation,
             AppFooter
         },
-        name:'App'
+        name: 'App'
     }
 </script>

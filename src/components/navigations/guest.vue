@@ -14,7 +14,7 @@
                     </v-list-tile>
                 </v-list>
             </v-toolbar>
-            <v-list>
+            <v-list rounded="true">
                 <v-list-tile v-for="item in items" :key="item.title" @click="$router.push(item.to)">
                     <v-list-tile-action>
                         <v-icon color="primary">{{item.icon}}</v-icon>

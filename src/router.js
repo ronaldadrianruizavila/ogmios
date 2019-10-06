@@ -12,6 +12,16 @@ const beforeEnter = (to,from,next)=>{
     }
 };
 
+const beforeAdmin = (to,from,next)=>{
+    if(store.state.authService.logged && store.state.authService.role === 'admin'){
+        console.log('Si es Admin');
+        next();
+    } else{
+        next({path:'/'})
+        console.log('No es Admin');
+    }
+};
+
 export default new Router({
     mode: "history",
     base: process.env.BASE_URL,
@@ -37,6 +47,23 @@ export default new Router({
                 import(/* webpackChunkName: "login" */ "./views/Login.vue"),
             meta: {Auth: false, title: 'Login'},
             beforeEnter:(to,from,next)=>beforeEnter(to,from,next)
+        },
+        {
+            path: "/admin",
+            name: "Admin",
+            component: () =>
+                import(/* webpackChunkName: "login" */ "./views/administration/AdminHome.vue"),
+            meta: {Auth: true, title: 'Login',role:'admin'},
+            beforeEnter:(to,from,next)=>beforeAdmin(to,from,next),
+            children:[
+                {
+                    name:'Users',
+                    path:'users',
+                    component:() =>
+                        import(/* webpackChunkName: "login" */ "./views/administration/AdminUsers.vue"),
+                    meta: {Auth: true, title: 'Login',role:'admin'},
+                }
+            ]
         }
     ]
 });

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import  createPersistedState  from  'vuex-persistedstate'
 import authService from './services/auth';
+import userService from './services/users';
 
 Vue.use(Vuex);
 
@@ -30,7 +31,8 @@ export default new Vuex.Store({
   },
   actions: {},
   modules:{
-    authService
+    authService,
+    userService
   },
   plugins: [createPersistedState()]
 });
